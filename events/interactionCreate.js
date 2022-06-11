@@ -8,7 +8,7 @@ module.exports = (client, int) => {
 
         case 'saveTrack': {
 
-            if (!queue || !queue.playing) return int.reply({ content: `Жодгої музики зараз не грає.  `, ephemeral: true, components: [] });
+            if (!queue || !queue.playing) return int.reply({ content: `Жодної музики зараз не грає.  `, ephemeral: true, components: [] });
 
             int.member.send(`Ви зберегли музику ${queue.current.title} | ${queue.current.author} з сервера ${int.member.guild.name} `).then(() => {
                 

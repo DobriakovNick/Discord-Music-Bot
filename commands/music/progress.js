@@ -18,7 +18,7 @@ module.exports = {
 
         const timestamp = queue.getPlayerTimestamp();
 
-        if (timestamp.progress == 'Infinity') return message.channel.send(`Playing a live, no data to display `);
+        if (timestamp.progress == 'Infinity') return message.channel.send(`У прямому ефірі немає даних для відображення`);
 
         message.channel.send(`${progress} (**${timestamp.progress}**%)`);
     },

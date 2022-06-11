@@ -32,15 +32,15 @@ module.exports = {
 
         const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
 
-        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
+        embed.setDescription(`Гучність **${queue.volume}**%\nТривалість **${trackDuration}**\nЗациклованість **${methods[queue.repeatMode]}**\nДодана ${track.requestedBy}`);
 
         embed.setTimestamp();
 
-        embed.setFooter('Music comes first', message.author.avatarURL({ dynamic: true }));
+        embed.setFooter('Працює не чіпай', message.author.avatarURL({ dynamic: true }));
 
         const saveButton = new MessageButton();
 
-        saveButton.setLabel('Save this track');
+        saveButton.setLabel('Зберегти цей трек');
 
         saveButton.setCustomId('saveTrack');
 

@@ -39,7 +39,7 @@ module.exports = {
             return message.channel.send(`Не можу під'єднатись до голосового чату ${message.author}. `);
         }
 
-        await message.channel.send(`Завантажую ${res.playlist ? 'playlist' : 'track'}... `);
+        await message.channel.send(`Завантажую ${res.playlist ? 'плейлист' : 'трек'}... `);
 
         res.playlist ? queue.addTracks(res.tracks) : queue.addTrack(res.tracks[0]);
 

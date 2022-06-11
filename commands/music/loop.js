@@ -22,7 +22,7 @@ module.exports = {
 
             const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.QUEUE : QueueRepeatMode.OFF);
 
-            return message.channel.send(success ? `Зациклована **${queue.repeatMode === 0 ? 'Вимкнена' : 'Ввімкнена'}** Вся черга буде зациклована ` : `Щось трапилось не так ${message.author}. `);
+            return message.channel.send(success ? `Зациклованість черги **${queue.repeatMode === 0 ? 'Вимкнена.' : 'Ввімкнена.'}**  ` : `Щось трапилось не так ${message.author}. `);
         
         } 
         
@@ -32,7 +32,7 @@ module.exports = {
 
             const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.TRACK : QueueRepeatMode.OFF);
 
-            return message.channel.send(success ? `Зациклованість **${queue.repeatMode === 0 ? 'Вимкнена' : 'Ввімкнена'}** Поточна музика буде зациклована  ` : `Щось трапилось не так ${message.author}. `);
+            return message.channel.send(success ? `Зациклованість трека **${queue.repeatMode === 0 ? 'Вимкнена.' : 'Ввімкнена.'}** ` : `Щось трапилось не так ${message.author}. `);
         
         };
 

@@ -13,7 +13,7 @@ module.exports = {
 
     async execute(client, message, args) {
 
-        if (!args[0]) return message.channel.send(`Будь ласка, введіть правильний запрос ${message.author}. `);
+        if (!args[0]) return message.channel.send(`Будь ласка, введіть правильний запрос, ${message.author}. `);
 
         const res = await player.search(args.join(' '), {
 
@@ -22,7 +22,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return message.channel.send(`Немає результатів пошуку ${message.author}. `);
+        if (!res || !res.tracks.length) return message.channel.send(`Немає результатів пошуку, ${message.author}. `);
 
         const queue = await player.createQueue(message.guild, {
 
@@ -72,7 +72,7 @@ module.exports = {
 
                 await player.deleteQueue(message.guild.id);
 
-                return message.channel.send(`Не можу приєднатись до голосового чату ${message.author}. `);
+                return message.channel.send(`Не можу приєднатись до голосового чату, ${message.author}. `);
             }
 
             await message.channel.send(`Відображаю результати пошуку `);
@@ -83,8 +83,8 @@ module.exports = {
         });
 
         collector.on('end', (msg, reason) => {
-            
-            if (reason === 'time') return message.channel.send(`Час пошуку вийшов ${message.author}.`);
+
+            if (reason === 'time') return message.channel.send(`Час пошуку вийшов, ${message.author}.`);
         });
     },
 };

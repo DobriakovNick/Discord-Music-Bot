@@ -14,9 +14,9 @@ module.exports = {
 
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue) return message.channel.send(`Жодної музики зараз не грає ${message.author}. `);
+        if (!queue) return message.channel.send(`Жодної музики зараз не грає, ${message.author}. `);
 
-        if (!queue.tracks[0]) return message.channel.send(`Жодної музики в черзу після цієї немає ${message.author}. `);
+        if (!queue.tracks[0]) return message.channel.send(`Жодної музики в черзу після цієї немає, ${message.author}. `);
 
         const embed = new MessageEmbed();
 
