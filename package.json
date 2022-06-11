@@ -1,0 +1,38 @@
+{
+  "name": "music-bot",
+  "main": "main.js",
+  "author": "DobriakovNick",
+  "version": "6.0.0",
+  "repository": "git remote add origin",
+  "description": " Discord music bot.",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "discord-player": "^5.2.2",
+    "discord.js": "^13.8.0",
+    "ffmpeg-static": "^4.4.1",
+    "ms": "^3.0.0-canary.1",
+    "opusscript": "^0.0.8",
+    "pkg": "^5.7.0",
+    "sequelize": "^6.20.1",
+    "sqlite3": "^5.0.8",
+    "ytdl-core": "^4.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "engines": {
+      "node": "16.15.1",
+      "npm": "8.11.0"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/synicalsyntax/discord.js-heroku/issues"
+  },
+  "homepage": "https://github.com/synicalsyntax/discord.js-heroku#readme"
+}
