@@ -14,6 +14,6 @@ module.exports = {
 
         await queue.shuffle();
 
-        return message.channel.send(`Черга перемішана для **${queue.tracks.length}** пісень ! `);
+        return message.channel.send(`Черга перемішана для **${queue.tracks.length}** пісень `);
     },
 };

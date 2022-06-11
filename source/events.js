@@ -32,5 +32,5 @@ player.on('channelEmpty', (queue) => {
 
 player.on('queueEnd', (queue) => {
     
-    queue.metadata.send('Я закінчив програвати всю чергу');
+    queue.metadata.send('Я закінчив програвати всі треки');
 });
