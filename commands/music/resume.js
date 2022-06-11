@@ -5,12 +5,13 @@ module.exports = {
     voiceChannel: true,
 
     execute(client, message) {
+
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue) return message.channel.send(`Жодної музики зараз не грає ${message.author}.. Спробуйте ще раз.. `);
+        if (!queue) return message.channel.send(`Жодної музики зараз не грає ${message.author}.`);
 
         const success = queue.setPaused(false);
 
-        return message.channel.send(success ? `Current music ${queue.current.title} resumed ` : `Something went wrong ${message.author}... try again ? `);
+        return message.channel.send(success ? `Поточна музика ${queue.current.title} відновлена ` : `Щось трапилось не так ${message.author}. `);
     },
 };

@@ -1,28 +1,41 @@
 const { QueueRepeatMode } = require('discord-player');
 
 module.exports = {
+
     name: 'loop',
+
     aliases: ['lp', 'repeat'],
+
     utilisation: '{pref}loop <queue>',
+
     voiceChannel: true,
 
     execute(client, message, args) {
+
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.. Спробуйте ще раз.. `);
+        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.`);
 
         if (args.join('').toLowerCase() === 'queue') {
-            if (queue.repeatMode === 1) return message.channel.send(`You must first disable the current music in the loop mode (${client.config.app.px}loop) ${message.author}... try again ? `);
+
+            if (queue.repeatMode === 1) return message.channel.send(`Спочатку потрібно вимкнути поточну музику в режимі циклу (${client.config.app.px}) ${message.author}. `);
 
             const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.QUEUE : QueueRepeatMode.OFF);
 
-            return message.channel.send(success ? `Repeat mode **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** the whole queue will be repeated endlessly ` : `Something went wrong ${message.author}... try again ? `);
-        } else {
-            if (queue.repeatMode === 2) return message.channel.send(`You must first disable the current queue in the loop mode (${client.config.app.px}loop queue) ${message.author}... try again ? `);
+            return message.channel.send(success ? `Зациклована **${queue.repeatMode === 0 ? 'Вимкнена' : 'Ввімкнена'}** Вся черга буде зациклована ` : `Щось трапилось не так ${message.author}. `);
+        
+        } 
+        
+        else {
+            
+            if (queue.repeatMode === 2) return message.channel.send(`Спочатку потрібно вимкнути поточну музику в режимі циклу (${client.config.app.px} ${message.author}. `);
 
             const success = queue.setRepeatMode(queue.repeatMode === 0 ? QueueRepeatMode.TRACK : QueueRepeatMode.OFF);
 
-            return message.channel.send(success ? `Repeat mode **${queue.repeatMode === 0 ? 'disabled' : 'enabled'}** the current music will be repeated endlessly (you can loop the queue with the <queue> option) ` : `Something went wrong ${message.author}... try again ? `);
+            return message.channel.send(success ? `Зациклованість **${queue.repeatMode === 0 ? 'Вимкнена' : 'Ввімкнена'}** Поточна музика буде зациклована  ` : `Щось трапилось не так ${message.author}. `);
+        
         };
+
     },
+
 };

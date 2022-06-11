@@ -1,7 +1,10 @@
 module.exports = {
     name: 'stop',
-    aliases: ['dc'],
+
+    aliases: ['st'],
+
     utilisation: '{pref}stop',
+
     voiceChannel: true,
 
     execute(client, message) {

@@ -2,11 +2,15 @@ const maxVol = client.config.opt.maxVol;
 
 module.exports = {
     name: 'volume',
+
     aliases: ['vol'],
+
     utilisation: `{pref}volume [1-${maxVol}]`,
+
     voiceChannel: true,
 
     execute(client, message, args) {
+        
         const queue = player.getQueue(message.guild.id);
 
         if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.`);

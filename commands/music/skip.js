@@ -1,10 +1,14 @@
 module.exports = {
     name: 'skip',
+
     aliases: ['sk'],
+
     utilisation: '{pref}skip',
+
     voiceChannel: true,
 
     execute(client, message) {
+        
         const queue = player.getQueue(message.guild.id);
 
         if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}. `);

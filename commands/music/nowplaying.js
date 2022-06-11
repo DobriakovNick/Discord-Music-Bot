@@ -1,39 +1,50 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
+
     name: 'nowplaying',
+
     aliases: ['np'],
+
     utilisation: '{pref}nowplaying',
+
     voiceChannel: true,
 
     execute(client, message) {
+
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.. Спробуйте ще раз.. `);
+        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}. `);
 
         const track = queue.current;
 
         const embed = new MessageEmbed();
 
         embed.setColor('RED');
+
         embed.setThumbnail(track.thumbnail);
+
         embed.setAuthor(track.title, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
 
         const methods = ['disabled', 'track', 'queue'];
 
         const timestamp = queue.getPlayerTimestamp();
+
         const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
 
-        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
+        embed.setDescription(`Гучність **${queue.volume}**%\nДовжина **${trackDuration}**\nЗациклованість **${methods[queue.repeatMode]}**\n Додана  ${track.requestedBy}`);
 
         embed.setTimestamp();
-        embed.setFooter('Music comes first', message.author.avatarURL({ dynamic: true }));
+
+        embed.setFooter('Бот для D&D', message.author.avatarURL({ dynamic: true }));
 
         const saveButton = new MessageButton();
 
-        saveButton.setLabel('Save this track');
+        saveButton.setLabel('Зберегти цю музику');
+
         saveButton.setCustomId('saveTrack');
-        saveButton.setStyle('SUCCESS');
+
+        saveButton.setStyle('Успішно');
 
         const row = new MessageActionRow().addComponents(saveButton);
 
