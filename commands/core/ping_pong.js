@@ -4,7 +4,7 @@ module.exports = {
 
     name: 'ping_pong',
 
-    aliases: [],
+    aliases: ['p','ping'],
 
     utilisation: '{pref}ping_pong',
     
