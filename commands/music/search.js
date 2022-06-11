@@ -8,14 +8,14 @@ module.exports = {
     voiceChannel: true,
 
     async execute(client, message, args) {
-        if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? `);
+        if (!args[0]) return message.channel.send(`Будь ласка, введіть правильний запрос ${message.author}. `);
 
         const res = await player.search(args.join(' '), {
             requestedBy: message.member,
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? `);
+        if (!res || !res.tracks.length) return message.channel.send(`Немає результатів пошуку ${message.author}. `);
 
         const queue = await player.createQueue(message.guild, {
             metadata: message.channel
@@ -24,14 +24,14 @@ module.exports = {
         const embed = new MessageEmbed();
 
         embed.setColor('RED');
-        embed.setAuthor(`Results for ${args.join(' ')}`, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
+        embed.setAuthor(`Результат для ${args.join(' ')}`, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
 
         const maxTracks = res.tracks.slice(0, 10);
 
-        embed.setDescription(`${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\nSelect choice between **1** and **${maxTracks.length}** or **cancel** `);
+        embed.setDescription(`${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\nВиберіть між **1** і **${maxTracks.length}** або **cancel** `);
 
         embed.setTimestamp();
-        embed.setFooter('Music comes first', message.author.avatarURL({ dynamic: true }));
+        embed.setFooter('Зроблено для D&D користування', message.author.avatarURL({ dynamic: true }));
 
         message.channel.send({ embeds: [embed] });
 
@@ -42,11 +42,11 @@ module.exports = {
         });
 
         collector.on('collect', async (query) => {
-            if (query.content.toLowerCase() === 'cancel') return message.channel.send(`Search cancelled `) && collector.stop();
+            if (query.content.toLowerCase() === 'cancel') return message.channel.send(`Пошук відмінений `) && collector.stop();
 
             const value = parseInt(query.content);
 
-            if (!value || value <= 0 || value > maxTracks.length) return message.channel.send(`Invalid response, try a value between **1** and **${maxTracks.length}** or **cancel**... try again ? `);
+            if (!value || value <= 0 || value > maxTracks.length) return message.channel.send(`Недійсна відповідь, спробуйте ввести значення від **1** до **${maxTracks.length}** або **cancel**.`);
 
             collector.stop();
 
@@ -54,10 +54,10 @@ module.exports = {
                 if (!queue.connection) await queue.connect(message.member.voice.channel);
             } catch {
                 await player.deleteQueue(message.guild.id);
-                return message.channel.send(`I can't join the voice channel ${message.author}... try again ? `);
+                return message.channel.send(`Не можу приєднатись до голосового чату ${message.author}. `);
             }
 
-            await message.channel.send(`Loading your search... `);
+            await message.channel.send(`Відображаю результати пошуку `);
 
             queue.addTrack(res.tracks[query.content - 1]);
 
@@ -65,7 +65,7 @@ module.exports = {
         });
 
         collector.on('end', (msg, reason) => {
-            if (reason === 'time') return message.channel.send(`Search timed out ${message.author}... try again ? `);
+            if (reason === 'time') return message.channel.send(`Час пошуку вийшов ${message.author}.`);
         });
     },
 };

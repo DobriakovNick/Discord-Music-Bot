@@ -1,6 +1,6 @@
 module.exports = {
     app: {
-        px: '!', //Используемый префикс 
+        px: '!', 
         token: 'OTg0Mzc1MzIyMjk0MjU1Njc3.GJ6EBD.gfQO_7-a7CU1kKGrYId-D8hADHaFwXTBsTanqc', //Токен бота
     },
 
@@ -8,7 +8,7 @@ module.exports = {
         DJ: {
             enabled: false,
             roleName: 'DJ',
-            commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume'] //Лист команд
+            commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume'] 
         },
         maxVol: 100,
         loopMessage: false,

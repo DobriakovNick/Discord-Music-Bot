@@ -9,18 +9,18 @@ module.exports = {
     execute(client, message, args) {
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? `);
+        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.`);
 
         const vol = parseInt(args[0]);
 
-        if (!vol) return message.channel.send(`The current volume is ${queue.volume} 🔊\n*To change the volume enter a valid number between **1** and **${maxVol}**.*`);
+        if (!vol) return message.channel.send(`Поточна гучність ${queue.volume} 🔊\n*Щоб змінити гучність введіть число від **1** до **${maxVol}**.*`);
 
-        if (queue.volume === vol) return message.channel.send(`The volume you want to change is already the current one ${message.author}... try again ? `);
+        if (queue.volume === vol) return message.channel.send(`Гучність на яку ви хочете змінити вже стоїть ${message.author}.    `);
 
-        if (vol < 0 || vol > maxVol) return message.channel.send(`The specified number is not valid. Enter a number between **1** and **${maxVol}** ${message.author}... try again ? `);
+        if (vol < 0 || vol > maxVol) return message.channel.send(`Це число не підходить.  Введіть число від **1** до **${maxVol}** ${message.author}.  `);
 
         const success = queue.setVolume(vol);
 
-        return message.channel.send(success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${message.author}... try again ?`);
+        return message.channel.send(success ? `Гучність біла змінена до **${vol}**/**${maxVol}**% 🔊` : `Щось не так ${message.author}.  `);
     },
 };

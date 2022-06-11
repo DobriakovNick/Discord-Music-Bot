@@ -5,12 +5,12 @@ module.exports = (client, int) => {
 
     switch (int.customId) {
         case 'saveTrack': {
-            if (!queue || !queue.playing) return int.reply({ content: `No music currently playing... try again ? `, ephemeral: true, components: [] });
+            if (!queue || !queue.playing) return int.reply({ content: `Жодгої музики зараз не грає.  `, ephemeral: true, components: [] });
 
-            int.member.send(`You saved the track ${queue.current.title} | ${queue.current.author} from the server ${int.member.guild.name} `).then(() => {
-                return int.reply({ content: `I have sent you the title of the music by private messages `, ephemeral: true, components: [] });
+            int.member.send(`Ви зберегли музику ${queue.current.title} | ${queue.current.author} з сервера ${int.member.guild.name} `).then(() => {
+                return int.reply({ content: `Я надіслав Вам назву музики в особисті повідомлення`, ephemeral: true, components: [] });
             }).catch(error => {
-                return int.reply({ content: `Unable to send you a private message... try again `, ephemeral: true, components: [] });
+                return int.reply({ content: `Не вдається надіслати Вам приватне повідомлення.`, ephemeral: true, components: [] });
             });
         }
     }

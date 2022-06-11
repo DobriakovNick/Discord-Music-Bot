@@ -12,9 +12,9 @@ module.exports = (client, message) => {
 
     const DJ = client.config.opt.DJ;
     if (cmd && cmd.voiceChannel) {
-        if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${message.author}... try again `);
+        if (!message.member.voice.channel) return message.channel.send(`Ви не в голосовому чаті, ${message.author}. `);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`You are not in the same voice channel ${message.author}... try again ? `);
+        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`Ви не в тому ж самому головому чаті, що і я, ${message.author}. `);
     }
 
     if (cmd) cmd.execute(client, message, args);
