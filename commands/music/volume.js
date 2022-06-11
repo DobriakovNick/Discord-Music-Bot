@@ -10,7 +10,7 @@ module.exports = {
     voiceChannel: true,
 
     execute(client, message, args) {
-        
+
         const queue = player.getQueue(message.guild.id);
 
         if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.`);
@@ -25,6 +25,6 @@ module.exports = {
 
         const success = queue.setVolume(vol);
 
-        return message.channel.send(success ? `Гучність біла змінена до **${vol}**/**${maxVol}**% 🔊` : `Щось не так ${message.author}.  `);
+        return message.channel.send(success ? `Гучність була змінена до **${vol}**/**${maxVol}**% 🔊` : `Щось не так ${message.author}.  `);
     },
 };

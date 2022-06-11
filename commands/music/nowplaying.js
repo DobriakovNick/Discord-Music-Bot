@@ -14,7 +14,7 @@ module.exports = {
 
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}. `);
+        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}.. Спробуйте ще раз.. `);
 
         const track = queue.current;
 
@@ -32,19 +32,20 @@ module.exports = {
 
         const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
 
-        embed.setDescription(`Гучність **${queue.volume}**%\nДовжина **${trackDuration}**\nЗациклованість **${methods[queue.repeatMode]}**\n Додана  ${track.requestedBy}`);
+        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
 
         embed.setTimestamp();
 
-        embed.setFooter('Бот для D&D', message.author.avatarURL({ dynamic: true }));
+        embed.setFooter('Music comes first', message.author.avatarURL({ dynamic: true }));
 
         const saveButton = new MessageButton();
 
-        saveButton.setLabel('Зберегти цю музику');
+        saveButton.setLabel('Save this track');
 
         saveButton.setCustomId('saveTrack');
 
-        saveButton.setStyle('Успішно');
+        saveButton.setStyle('SUCCESS');
+        
 
         const row = new MessageActionRow().addComponents(saveButton);
 
