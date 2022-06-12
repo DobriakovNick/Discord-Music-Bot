@@ -11,7 +11,9 @@
   "dependencies": {
     "discord-player": "^5.2.2",
     "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
     "ffmpeg-static": "^4.4.1",
+    "mongoose": "^6.3.6",
     "ms": "^3.0.0-canary.1",
     "opusscript": "^0.0.8",
     "pkg": "^5.7.0",
@@ -23,8 +25,8 @@
     "nodemon": "^2.0.16"
   },
   "engines": {
-      "node": "16.15.1",
-      "npm": "8.11.0"
+    "node": "16.15.1",
+    "npm": "8.11.0"
   },
   "keywords": [
     "heroku",

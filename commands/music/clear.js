@@ -12,9 +12,9 @@ module.exports = {
         
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}..Спробуйте ще раз.. `);
+        if (!queue || !queue.playing) return message.channel.send(`Жодної музики зараз не грає ${message.author}. `);
 
-        if (!queue.tracks[0]) return message.channel.send(`Немає музики в черзі після поточної ${message.author}.. Спробуйте ще раз.. `);
+        if (!queue.tracks[0]) return message.channel.send(`Немає музики в черзі після поточної ${message.author}. `);
 
         await queue.clear();
 

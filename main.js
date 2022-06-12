@@ -5,7 +5,7 @@ const { Client, Intents } = require('discord.js');
 const port = process.env.PORT || 7001;
 
 global.client = new Client({
-
+    
     intents: [
 
         Intents.FLAGS.GUILDS,
@@ -16,8 +16,18 @@ global.client = new Client({
 
         Intents.FLAGS.GUILD_VOICE_STATES
     ]
-});
+})
+const mongoose =   require('mongoose')
+require('dotenv').config()
+client.on('ready', async() =>{
 
+    console.log('Клієнт готовий!')
+    
+    await mongoose.createConnection ()
+       process.env.MONGO_URI,
+       {keepAlive: true},
+       console.log ('Під`єднано до MongoDb')
+    })
 client.config = require('./config');
 
 global.player = new Player(client, client.config.opt.discordPlayer);

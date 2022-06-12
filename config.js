@@ -5,6 +5,8 @@ module.exports = {
         px: '!', 
 
         token: 'OTg0Mzc1MzIyMjk0MjU1Njc3.GJ6EBD.gfQO_7-a7CU1kKGrYId-D8hADHaFwXTBsTanqc', //Токен бота
+        
+        mongoPath: "mongodb+srv://NikitaMentol:5547450nik@cluster0.oz1nw.mongodb.net/?retryWrites=true&w=majority"
     },
 
     opt: {
