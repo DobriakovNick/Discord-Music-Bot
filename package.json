@@ -3,7 +3,6 @@
   "main": "main.js",
   "author": "DobriakovNick",
   "version": "6.0.0",
-  "repository": "git remote add origin",
   "description": " Discord music bot.",
   "scripts": {
     "start": "node main.js"

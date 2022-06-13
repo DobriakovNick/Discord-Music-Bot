@@ -30,7 +30,7 @@ module.exports = {
 
         const timestamp = queue.getPlayerTimestamp();
 
-        const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
+        const trackDuration = timestamp.progress == 'Нескінченність' ? 'Прямой ефір' : track.duration;
 
         embed.setDescription(`Гучність **${queue.volume}**%\nТривалість **${trackDuration}**\nЗациклованість **${methods[queue.repeatMode]}**\nДодана ${track.requestedBy}`);
 

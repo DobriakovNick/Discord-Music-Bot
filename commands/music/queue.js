@@ -38,7 +38,7 @@ module.exports = {
 
         embed.setTimestamp();
 
-        embed.setFooter('Все починається з інтересу ', message.author.avatarURL({ dynamic: true }));
+        embed.setFooter('Працює не чіпай ', message.author.avatarURL({ dynamic: true }));
 
         message.channel.send({ embeds: [embed] });
     },
